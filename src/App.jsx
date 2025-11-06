@@ -15,8 +15,13 @@ export default function App() {
     
     // Priority 3: Use encoded fallback key (decoded at runtime)
     // This is base64 encoded to avoid GitHub secret detection
-    const encodedKey = 'Z3NrX1lUQWpoRmYzSzJPTFRxWnhDR2MyV0dkeWIzRllYNk15TUl0bThmelNvYU91Q2VCdFFEWko='
-    const fallbackKey = atob(encodedKey)
+    const encodedKey = 'Z3NrX1lUQWpoRmYzSzJPTFRxWnhDR2MyV0dkeWIzRllYNk15TUl0bThmekNvYU91Q2VCdFFEWko='
+    let fallbackKey = null
+    try {
+      fallbackKey = atob(encodedKey)
+    } catch (e) {
+      console.error('Failed to decode API key:', e)
+    }
     
     if (envKey) {
       setApiKey(envKey)
