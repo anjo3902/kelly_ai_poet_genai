@@ -4,4 +4,7 @@ dist
 *.log
 .env
 .env.local
+.env.production
 .vercel
+
+# Note: API keys should be set in Vercel Environment Variables, not committed

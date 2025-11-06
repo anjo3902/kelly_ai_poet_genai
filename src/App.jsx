@@ -12,10 +12,15 @@ export default function App() {
     const storedKey = localStorage.getItem('groq_api_key')
     
     if (envKey) {
+      // Use environment variable key (no modal needed)
       setApiKey(envKey)
+      setShowModal(false)
     } else if (storedKey) {
+      // Use stored key from previous session
       setApiKey(storedKey)
+      setShowModal(false)
     } else {
+      // No key available, show modal
       setShowModal(true)
     }
   }, [])
